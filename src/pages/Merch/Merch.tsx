@@ -19,9 +19,6 @@ function Merch() {
                     <ProductList Categories={categories} Products={products} SetProductsCallback={setProducts} />
                 </Col>
             </Row>
-            <Row>
-                {JSON.stringify(categories)}
-            </Row>
         </>
     )
 }
