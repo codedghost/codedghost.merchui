@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+import {BrowserRouter, Route, Routes } from "react-router-dom";
+import NavBar from './components/Navbar/NavBar';
+import Home from './pages/Home/Home';
+import { Carousel } from 'react-bootstrap';
+import Merch from './pages/Merch/Merch';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="appContent">
+      <BrowserRouter>
+        <NavBar />
+        
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 h-50"
+              src="images/pexels-lumn-167699.jpg"
+              alt="CodedGhost Merch" />
+            <Carousel.Caption>
+              <h3>CodedGhost Merch</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+        <hr className="half-rule" />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Merch" element={<Merch />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
