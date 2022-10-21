@@ -21,8 +21,6 @@ function CategoryList(props: CategoryListProps) {
     }, [props.Categories])
 
     const handleChange = (id: number, property: string) => {
-        console.log(id);
-        console.log(property);
         if (props.Categories !== undefined) {
             const updatedCategories = props.Categories.map((c) => handleChangeMap(c, id, property));
 

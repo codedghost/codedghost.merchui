@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios";
 import Config from "./Config/Config";
 
 export function GetUiApiUrl(endpoint: string): string {
-    console.log(`${Config.Api}${endpoint}`);
     return `${Config.Api}${endpoint}`;
 }
 
