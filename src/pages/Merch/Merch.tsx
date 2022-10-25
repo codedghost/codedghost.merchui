@@ -6,7 +6,7 @@ import Category from "../../models/Category";
 import Product from "../../models/Product";
 
 function Merch() {
-    const [categories, setCategories] = useState<Category[]>([{title: "test", id: 0, selected: true} as Category] as Category[])
+    const [categories, setCategories] = useState<Category[]>([{title: "", id: 0, selected: true} as Category] as Category[])
     const [products, setProducts] = useState<Product[]>([] as Product[])
     
     return (

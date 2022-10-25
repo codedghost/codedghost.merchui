@@ -24,19 +24,24 @@ function CategoryList(props: CategoryListProps) {
         if (props.Categories !== undefined) {
             const updatedCategories = props.Categories.map((c) => handleChangeMap(c, id, property));
 
-
             props.SetSelectedCategoriesCallback(updatedCategories);
         }
     };
     
     const handleChangeMap = function(category: Category, id: number, property: string): Category {
-        return category.id === id 
-            ? property === "check" 
-                ? {...category, selected: !category.selected } as Category 
-                : { ...category, isExpanded: !category.isExpanded}
-            : category.children.some(x => x !== undefined) 
-                ? {...category, children: category.children.map((c) => handleChangeMap(c, id, property))}
-                : category;
+        if (category.id === id) {
+            if (property === "check") {
+                return {...category, selected: !category.selected } as Category;
+            } else {
+                return { ...category, isExpanded: !category.isExpanded}
+            }
+        } else {
+            if (category.children.some(x => x !== undefined)) {
+                return {...category, children: category.children.map((c) => handleChangeMap(c, id, property))} as Category
+            } else {
+                return category;
+            }
+        }
     }
     
     var categoryListMap = function(category: Category): JSX.Element {
@@ -50,6 +55,7 @@ function CategoryList(props: CategoryListProps) {
             <Form>
                 {categoryListContent}
             </Form>
+            {JSON.stringify(props.Categories)}
         </>
     )
 }
